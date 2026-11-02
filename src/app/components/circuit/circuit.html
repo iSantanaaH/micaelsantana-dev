@@ -1,0 +1,19 @@
+<svg class="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 1440 720"
+     preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+
+  @for (d of PATHS; track d; let i = $index) {
+    <g>
+      <path [attr.d]="d" fill="none" stroke="rgba(96,165,250,0.16)" stroke-width="1.2"/>
+      <path [attr.d]="d" fill="none" stroke="#4FD8FF" stroke-width="2" stroke-linecap="round" class="circuit-pulse"
+            [style.animation-delay]="(i * 0.7) + 's'" style="filter: drop-shadow(0 0 6px #4FD8FF)"/>
+    </g>
+  }
+
+  @for (node of NODES; track node; let i = $index) {
+    <g>
+      <circle [attr.cx]="node[0]" [attr.cy]="node[1]" r="9" fill="rgba(79,216,255,0.12)"/>
+      <circle [attr.cx]="node[0]" [attr.cy]="node[1]" r="3" fill="#4FD8FF" class="blink"
+              [style.animation-delay]="(i * 0.3) + 's'"/>
+    </g>
+  }
+</svg>

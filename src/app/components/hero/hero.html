@@ -1,0 +1,101 @@
+<section id="top" class="relative min-h-[100svh] overflow-hidden pt-32 pb-24 md:pt-40" data-testid="hero-section">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 dot-grid opacity-60 [mask-image:radial-gradient(ellipse_at_60%_40%,black,transparent_75%)]"></div>
+    <app-circuit />
+    <div class="absolute right-[-10%] top-[10%] h-[620px] w-[620px] rounded-full bg-[#2F80FF] opacity-20 blur-[140px]"></div>
+  </div>
+
+  <div class="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-5 sm:px-8 lg:grid-cols-12">
+
+    <!-- Coluna Esquerda -->
+    <div class="lg:col-span-7">
+
+      <!-- Badge com animação de fade-up (delay 0s) -->
+      <div class="inline-flex items-center gap-3 rounded-full border border-slate-800 bg-white/[0.03] px-4 py-2 animate-fade-up" style="animation-delay: 0s;" data-testid="hero-badge">
+        <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399] blink"></span>
+        <span class="text-[11px] font-mono uppercase tracking-wider text-slate-300">{{ h.badge }}</span>
+      </div>
+
+      <!-- Título Principal com efeito Line (revelação por trás de máscara) -->
+      <h1 class="font-display mt-8 text-5xl sm:text-6xl lg:text-[6rem] font-extrabold leading-tight tracking-tight" data-testid="hero-name">
+        <span class="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+          <span class="block font-display text-chrome text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 animate-reveal-line" style="animation-delay: 0.1s;">{{ h.line1 }}</span>
+        </span>
+        <span class="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+          <span class="block text-cyan-400 drop-shadow-[0_0_25px_rgba(79,216,255,0.4)] animate-reveal-line" style="animation-delay: 0.2s;">{{ h.line2 }}</span>
+        </span>
+      </h1>
+
+      <!-- Cargo com animação fade-up (delay 0.35s) -->
+      <p class="font-display mt-6 text-xl sm:text-2xl font-semibold text-slate-200 animate-fade-up" style="animation-delay: 0.35s;" data-testid="hero-role">
+        {{ h.role }}
+      </p>
+
+      <!-- Bio com animação fade-up (delay 0.45s) -->
+      <p class="mt-5 max-w-xl text-base md:text-lg leading-relaxed text-[var(--muted)] animate-fade-up" style="animation-delay: 0.45s;" data-testid="hero-bio">
+        {{ h.bio }}
+      </p>
+
+      <!-- Botões com animação fade-up (delay 0.55s) -->
+      <div class="mt-10 flex flex-wrap items-center gap-4 animate-fade-up" style="animation-delay: 0.55s;">
+        <!-- Botão Currículo dinâmico (PT/EN) -->
+        <a [href]="currentCvLink" target="_blank" rel="noopener noreferrer" download
+           class="btn-primary inline-flex items-center gap-2"
+           data-testid="download-cv-button">
+          <svg lucideDownload [size]="18" class="w-5 h-5"></svg> {{ h.cv }}
+        </a>
+
+        <!-- Botão Diploma fixo em documents -->
+        <a [href]="LINKS.diploma" target="_blank" rel="noopener noreferrer" download
+           class="btn-ghost inline-flex items-center gap-2"
+           data-testid="download-diploma-button">
+          <svg lucideGraduationCap [size]="18" class="w-5 h-5"></svg> {{ h.diploma }}
+        </a>
+      </div>
+
+      <!-- Estatísticas com animação fade-up (delay 0.65s) -->
+      <div class="mt-12 flex flex-wrap items-end gap-x-10 gap-y-6 animate-fade-up" style="animation-delay: 0.65s;">
+        @for (stat of h.stats; track stat[1]; let i = $index) {
+          <div [attr.data-testid]="'hero-stat-' + i">
+            <p class="font-display text-chrome text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">{{ stat[0] }}</p>
+            <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">{{ stat[1] }}</p>
+          </div>
+        }
+        <p class="flex items-center gap-2 text-sm text-slate-400" data-testid="hero-location">
+          <svg lucideMapPin [size]="15" class="text-cyan-400 w-4 h-4"></svg> {{ h.chip }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Coluna Direita (Visual Chip MW-Flow com animação de entrada e cards flutuantes) -->
+    <div class="lg:col-span-5 px-4 sm:px-0">
+      <div class="relative [perspective:1200px] animate-fade-up" style="animation-delay: 0.4s;" data-testid="hero-visual">
+        <div class="panel relative overflow-hidden rounded-[32px] p-3 shadow-[0_40px_120px_-30px_rgba(47,128,255,0.6)]">
+          <img src="/logo.jpg" alt="MW-Flow chip" class="aspect-square w-full rounded-[24px] object-cover"/>
+          <div class="absolute inset-3 rounded-[24px] bg-[radial-gradient(circle_at_50%_40%,transparent_35%,rgba(4,10,28,0.75)_90%)]"></div>
+        </div>
+
+        <!-- Card 1 com classe .panel e .float -->
+        <div class="panel float absolute -left-4 sm:-left-12 bottom-10 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-2xl">
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-[var(--blue)]/25">
+            <svg lucideCpu [size]="16" class="text-[var(--cyan)] w-4 h-4"></svg>
+          </span>
+          <div>
+            <p class="text-sm font-semibold text-white">{{ h.card1 }}</p>
+            <p class="text-xs text-[var(--muted)]">{{ h.card1v }}</p>
+          </div>
+        </div>
+
+        <!-- Card 2 com classe .panel, .float e delay -->
+        <div class="panel float absolute -right-2 sm:-right-8 -top-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm shadow-2xl"
+             style="animation-delay: 1.5s;">
+          <svg lucideZap [size]="14" class="text-emerald-400 w-4 h-4"></svg>
+          <span class="font-medium text-white">{{ h.card2 }}</span>
+          <span class="text-[var(--muted)]">· {{ h.card2v }}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

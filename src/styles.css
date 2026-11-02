@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cole aqui todo o conteúdo global extraído do index.css do React */
+
+@layer base {
+  :root {
+    --background: 228 75% 6%;
+    --foreground: 216 100% 96%;
+    --card: 222 66% 14%;
+    --card-foreground: 216 100% 96%;
+    --popover: 222 66% 10%;
+    --popover-foreground: 216 100% 96%;
+    --primary: 215 100% 59%;
+    --primary-foreground: 228 75% 6%;
+    --secondary: 222 50% 16%;
+    --secondary-foreground: 216 100% 96%;
+    --muted-foreground: 216 35% 74%;
+    --accent: 222 50% 18%;
+    --accent-foreground: 216 100% 96%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 60% 22%;
+    --input: 217 60% 22%;
+    --ring: 195 100% 65%;
+    --radius: 0.75rem;
+    --ink: #040a1c;
+    --navy: #081430;
+    --panel: #0c1a3a;
+    --line: #60a5fa29;
+    --blue: #2f80ff;
+    --cyan: #4fd8ff;
+    --text: #eaf2ff;
+    --muted: #a3b6d4;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--cyan);
+    color: var(--ink);
+  }
+}
+
+.font-display {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-optical-sizing: auto;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text-glow {
+  color: var(--cyan);
+  text-shadow: 0 0 32px #4fd8ff73;
+}
+
+.text-chrome {
+  background: linear-gradient(180deg, #fff, #b9cdf0 55%, #6f8fc4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain:after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+  content: "";
+  inset: 0;
+  opacity: .06;
+  pointer-events: none;
+  position: fixed;
+  z-index: 60;
+}
+
+.dot-grid {
+  background-image: radial-gradient(#60a5fa2e 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+.panel {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: #0c1a3ab8;
+  border: 1px solid var(--line);
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+@keyframes pulse-dash {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+.circuit-pulse {
+  stroke-dasharray: 18 382;
+  animation: pulse-dash 5s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: .25;
+  }
+}
+
+.blink {
+  animation: blink 2.4s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 50s linear infinite;
+}
+
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes float-y {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.float {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLine {
+  0% {
+    opacity: 0;
+    transform: translateY(110%) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* O Hero roda a animação direto ao carregar */
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-reveal-line {
+  opacity: 0;
+  animation: revealLine 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Seção About: se o elemento estiver dentro de uma seção e usar o observer,
+   ele só anima quando ganha a classe .in-view */
+#about .animate-fade-up {
+  animation: none; /* Desativa a animação automática no About */
+}
+
+#about .animate-fade-up.in-view {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Seção Stack: oculta inicialmente e só anima ao receber a classe .in-view via Observer */
+#stack .animate-fade-up {
+  animation: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#stack .animate-fade-up.in-view {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Seção Project: oculta inicialmente e só anima ao receber a classe .in-view via Observer */
+#project .animate-fade-up {
+  animation: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#project .animate-fade-up.in-view {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Seção Journey: oculta inicialmente e só anima ao receber a classe .in-view via Observer */
+#journey .animate-fade-up {
+  animation: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#journey .animate-fade-up.in-view {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Seção Contact: oculta inicialmente e só anima ao receber a classe .in-view via Observer */
+#contact .animate-fade-up {
+  animation: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#contact .animate-fade-up.in-view {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+.btn-primary {
+  align-items: center;
+  background: linear-gradient(100deg, #4fd8ff, #2f80ff);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px #4fd8ff66, 0 10px 40px -8px #2f80ffa6;
+  color: #031029;
+  display: inline-flex;
+  font-weight: 700;
+  gap: .6rem;
+  padding: .95rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.16, 1, .3, 1), box-shadow .35s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px #4fd8ffaa, 0 16px 50px -8px #2f80ffcc;
+}
+
+.btn-primary:disabled {
+  opacity: .6;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  align-items: center;
+  border: 1px solid #60a5fa4d;
+  border-radius: 999px;
+  color: var(--text);
+  display: inline-flex;
+  font-weight: 600;
+  gap: .5rem;
+  padding: .95rem 1.5rem;
+  transition: background-color .3s ease, border-color .3s ease, color .3s ease;
+}
+
+.btn-ghost:hover {
+  background-color: #4fd8ff14;
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.field {
+  width: 100%;
+  background: #040a1ccc;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .9rem 1.1rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.field::placeholder {
+  color: #a3b6d499;
+}
+
+.field:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px #4fd8ff22;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circuit-pulse, .blink, .marquee-track, .float, .spin-slow {
+    animation: none;
+  }
+}

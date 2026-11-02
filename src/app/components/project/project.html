@@ -1,0 +1,53 @@
+<section id="project" class="relative border-y border-[var(--line)] bg-[var(--navy)]" data-testid="project-section">
+  <div class="absolute inset-0 dot-grid opacity-40"></div>
+  <div class="absolute left-[-10%] top-1/3 h-[520px] w-[520px] rounded-full bg-[#2F80FF] opacity-20 blur-[140px]"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8 py-24 md:py-36">
+    <div class="grid grid-cols-1 items-start gap-14 lg:grid-cols-12">
+
+      <!-- Coluna Esquerda com animação de subida -->
+      <div class="lg:col-span-6 animate-fade-up">
+        <span class="inline-flex items-center gap-2 rounded-full bg-[var(--cyan)] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--ink)]" data-testid="project-flagship-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          {{ t.flagship }}
+        </span>
+
+        <div class="mt-8">
+          <app-section-head [eyebrow]="t.eyebrow" [title]="t.title"></app-section-head>
+        </div>
+
+        <p class="mt-36 text-base md:text-lg leading-relaxed text-[var(--muted)]" data-testid="project-description">
+          {{ t.text }}
+        </p>
+
+        <a [href]="LINKS.mwflow" target="_blank" rel="noopener noreferrer" class="btn-primary mt-10 inline-flex items-center gap-2" data-testid="project-repo-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          {{ t.repo }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Coluna Direita (Layers) com animação de subida e delay -->
+      <div class="lg:col-span-6 animate-fade-up" style="animation-delay: 0.2s;">
+        <app-project-layers [layers]="t.layers"></app-project-layers>
+      </div>
+    </div>
+
+    <!-- Grid de Destaques inferior com animação em cascata -->
+    <div class="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
+      @for (item of t.highlights; track lang() + '-' + i; let i = $index) {
+        <div class="h-full animate-fade-up" [style.animation-delay]="(0.15 * (i + 1)) + 's'">
+          <div class="group h-full rounded-[28px] border border-[var(--line)] bg-[var(--ink)]/70 p-8 transition-colors duration-500 hover:border-[var(--cyan)]/50"
+               [attr.data-testid]="'project-highlight-' + i">
+            <span class="font-display block text-7xl font-extrabold text-transparent [-webkit-text-stroke:1px_rgba(79,216,255,0.55)] transition-transform duration-700 group-hover:-translate-y-1">
+              0{{ i + 1 }}
+            </span>
+            <h3 class="font-display mt-8 text-2xl font-bold tracking-tight">{{ item[0] }}</h3>
+            <p class="mt-3 leading-relaxed text-[var(--muted)]">{{ item[1] }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

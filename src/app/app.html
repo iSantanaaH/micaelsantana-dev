@@ -1,0 +1,22 @@
+<app-navbar [lang]="currentLang()" (langChange)="currentLang.set($event)" />
+
+<main class="grain relative min-h-screen overflow-x-clip bg-[var(--ink)] text-[var(--text)]"
+      data-testid="portfolio-page">
+  <app-hero [lang]="currentLang()" />
+  <app-marquee [lang]="currentLang()" />
+  <app-about [lang]="currentLang()" />
+  <app-stack [lang]="currentLang()" />
+  <app-project [lang]="currentLang()" />
+  <app-journey [lang]="currentLang()" />
+  <app-contact [lang]="currentLang()" />
+</main>
+
+<footer class="border-t border-[var(--line)] py-10 bg-[var(--ink)] text-[var(--text)]" data-testid="footer">
+  <div
+    class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-5 sm:flex-row sm:items-center sm:px-8">
+    <p class="font-display font-bold">Micael<span class="text-[var(--cyan)]">.dev</span></p>
+    <p class="font-mono text-chrome text-xs text-[var(--muted)]">© {{ currentYear }} · <span>{{ footerText }}</span></p>
+  </div>
+</footer>
+
+<router-outlet />

@@ -1,0 +1,40 @@
+<section id="about" class="relative mx-auto max-w-7xl px-5 sm:px-8 py-24 md:py-36" data-testid="about-section">
+  <div class="grid grid-cols-1 gap-14 lg:grid-cols-12">
+
+    <!-- Coluna Esquerda: Eyebrow, Título e Texto (Sticky) com animação -->
+    <div class="lg:col-span-5 animate-fade-up">
+      <div class="lg:sticky lg:top-28">
+        <!-- Section Head Replicado -->
+        <div>
+          <span class="eyebrow">{{ a.eyebrow }}</span>
+          <h2 class="font-display text-chrome mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            {{ a.title }}
+          </h2>
+        </div>
+
+        <!-- Descrição -->
+        <p class="mt-6 text-base md:text-lg leading-relaxed text-[var(--muted)]" data-testid="about-text">
+          {{ a.text }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Coluna Direita: Lista Numerada de Factos -->
+    <ol class="lg:col-span-7 lg:pt-6">
+      @for (fact of a.facts; track fact[0]; let i = $index) {
+        <li class="group flex gap-6 border-t border-slate-800 py-7 last:border-b animate-fade-up"
+            [style.animation-delay]="(i * 0.15) + 's'"
+            [attr.data-testid]="'about-fact-' + i">
+          <span class="font-mono text-sm text-cyan-400 pt-1">0{{ i + 1 }}</span>
+          <div>
+            <p class="font-mono text-chrome text-xs uppercase tracking-[0.2em] text-slate-500">{{ fact[0] }}</p>
+            <p class="font-display mt-2 text-xl sm:text-2xl font-semibold text-white transition-colors duration-300 group-hover:text-cyan-400">
+              {{ fact[1] }}
+            </p>
+          </div>
+        </li>
+      }
+    </ol>
+
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<section class="marquee-wrap relative overflow-hidden border-y border-[var(--line)] bg-[var(--navy)] py-8"
+         data-testid="marquee-section">
+  <div class="marquee-track flex w-max">
+
+    <!-- Primary Row -->
+    <div class="flex shrink-0 items-center">
+      @for (s of items; track s) {
+        <span class="flex items-center">
+                    <span
+                      class="font-display px-8 text-3xl sm:text-5xl font-bold tracking-tight text-chrome whitespace-nowrap">
+                        {{ s }}
+                    </span>
+                    <svg [lucideIcon]="LucideSparkle" class="w-[22px] h-[22px] text-[var(--cyan)]"></svg>
+                </span>
+      }
+    </div>
+
+    <!-- Duplicate Row for Infinite Loop -->
+    <div class="flex shrink-0 items-center" aria-hidden="true">
+      @for (s of items; track 'dup-' + s) {
+        <span class="flex items-center">
+                    <span
+                      class="font-display px-8 text-3xl sm:text-5xl font-bold tracking-tight text-chrome whitespace-nowrap">
+                        {{ s }}
+                    </span>
+                    <svg [lucideIcon]="LucideSparkle" class="w-[22px] h-[22px] text-[var(--cyan)]"></svg>
+                </span>
+      }
+    </div>
+
+  </div>
+</section>
