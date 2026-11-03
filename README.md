@@ -1,59 +1,26 @@
-# MicelsantanaDev
+# 🚀 Micael.dev | Modern Portfolio & Enterprise Ecosystem
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+[![Angular](https://img.shields.io/badge/Angular-22+-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-## Development server
+Modern, high-performance personal portfolio and professional landing page engineered with **Angular (Standalone Components)**, **Tailwind CSS**, and modern web architectures. Fully integrated with secure backendless email dispatching via **Web3Forms**, responsive design systems, and advanced UI/UX animations.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🛠️ Tech Stack & Architecture
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Framework:** Angular 22+ (Standalone Components, Signals, Modern Control Flow)
+- **Styling & Design System:** Tailwind CSS, Custom Glassmorphism Panels (`.panel`), Dynamic Glow Effects, and Custom Fonts (*Bricolage Grotesque*, *Manrope*, *JetBrains Mono*)
+- **Form Integration & API:** Web3Forms API with domain security validation
+- **Hosting & CI/CD:** Vercel (Production & Preview deployments)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ⚙️ Getting Started Locally
 
-```bash
-ng generate component component-name
-```
+### Prerequisites
+Make sure you have **Node.js** and **pnpm** (or npm) installed on your machine.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Installation & Execution
